@@ -19,7 +19,8 @@ def calculate_profit_summary(single_day_parking, event_tickets, trash_can_count)
     most_profitable_park = {
         "index": 0,
         "income": 0.0,
-        "costs": 0.0
+        "costs": 0.0,
+        "bulk_savings": 0.0
     }
     
     for index in range(len(single_day_parking)):
@@ -34,6 +35,8 @@ def calculate_profit_summary(single_day_parking, event_tickets, trash_can_count)
         single_cans_count = trash_can_count[index] % 5
         single_can_costs = single_cans_count * TRASH_SERVICE
         total_garbage_costs = discounted_trash_costs + single_can_costs
+        max_garbage_costs = trash_can_count[index] * TRASH_SERVICE
+        costs_saved_by_discount = max_garbage_costs - total_garbage_costs
 
         # Track most profitable park after costs
         income_after_costs = park_total_income - total_garbage_costs
@@ -42,6 +45,7 @@ def calculate_profit_summary(single_day_parking, event_tickets, trash_can_count)
             most_profitable_park["index"] = index
             most_profitable_park["income"] = park_total_income
             most_profitable_park["costs"] = total_garbage_costs
+            most_profitable_park["bulk_savings"] = costs_saved_by_discount
 
     return most_profitable_park
 
