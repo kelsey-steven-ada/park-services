@@ -28,7 +28,7 @@ Adjust the calculations for this discount and also return how much the park save
 
     ```
     Park #0
-    Parking income:: $200.00
+    Parking income: $200.00
     Event income: $0.00
     Costs: $120.00
     
